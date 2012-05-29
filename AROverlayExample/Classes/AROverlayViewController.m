@@ -159,7 +159,7 @@
 
 // Calculate to find distance
 
-
+  
 // Assume the image map is roughly linear, for now
 // Assumes laser pointer is to the left of the image, in screen coordinates
 alpha = minAngle + xBright * maxAngle;
