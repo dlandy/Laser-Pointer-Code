@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FF036D51594F2E6003FEC0C /* AudioOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF036D31594F2E6003FEC0C /* AudioOutput.m */; };
+		6FF036DA1594F518003FEC0C /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FF036D81594F518003FEC0C /* controller.cpp */; };
 		96B05C101358AD1A00CF35AE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B05C0F1358AD1A00CF35AE /* CoreVideo.framework */; };
 		96B05C131358AD2200CF35AE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B05C121358AD2200CF35AE /* CoreMedia.framework */; };
 		96B05C151358AD3400CF35AE /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B05C141358AD3400CF35AE /* ImageIO.framework */; };
@@ -27,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6FF036D31594F2E6003FEC0C /* AudioOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioOutput.m; sourceTree = "<group>"; };
+		6FF036D41594F2E6003FEC0C /* AudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioOutput.h; sourceTree = "<group>"; };
+		6FF036D81594F518003FEC0C /* controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controller.cpp; sourceTree = "<group>"; };
+		6FF036D91594F518003FEC0C /* controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = controller.h; sourceTree = "<group>"; };
 		96B05C0F1358AD1A00CF35AE /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		96B05C121358AD2200CF35AE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		96B05C141358AD3400CF35AE /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -71,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6FF036D71594F4FA003FEC0C /* synth */ = {
+			isa = PBXGroup;
+			children = (
+				6FF036D81594F518003FEC0C /* controller.cpp */,
+				6FF036D91594F518003FEC0C /* controller.h */,
+			);
+			name = synth;
+			sourceTree = "<group>";
+		};
 		96C334E91353F36900AD25CA = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +145,9 @@
 		96C335341353FC5000AD25CA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6FF036D71594F4FA003FEC0C /* synth */,
+				6FF036D31594F2E6003FEC0C /* AudioOutput.m */,
+				6FF036D41594F2E6003FEC0C /* AudioOutput.h */,
 				96C335371353FC5000AD25CA /* AROverlayViewController.h */,
 				96C335381353FC5000AD25CA /* AROverlayViewController.m */,
 				96C335391353FC5000AD25CA /* CaptureSessionManager.h */,
@@ -222,6 +240,8 @@
 				96C3353B1353FC5000AD25CA /* AppDelegate.m in Sources */,
 				96C3353C1353FC5000AD25CA /* AROverlayViewController.m in Sources */,
 				96C3353D1353FC5000AD25CA /* CaptureSessionManager.m in Sources */,
+				6FF036D51594F2E6003FEC0C /* AudioOutput.m in Sources */,
+				6FF036DA1594F518003FEC0C /* controller.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

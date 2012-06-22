@@ -48,6 +48,27 @@
   [scanningLabel setHidden:YES];
 	[[self view] addSubview:scanningLabel];	
   
+  //set up an AudioOutput object (using mobilesynth example)
+    // Format preferred by the iphone (Fixed 8.24)
+    outputFormat.mSampleRate = 44100.0;
+    outputFormat.mFormatID = kAudioFormatLinearPCM;
+    outputFormat.mFormatFlags  = kAudioFormatFlagsAudioUnitCanonical;
+    outputFormat.mBytesPerPacket = sizeof(AudioUnitSampleType);
+    outputFormat.mFramesPerPacket = 1;
+    outputFormat.mBytesPerFrame = sizeof(AudioUnitSampleType);
+    outputFormat.mChannelsPerFrame = 1;
+    outputFormat.mBitsPerChannel = 8 * sizeof(AudioUnitSampleType);
+    outputFormat.mReserved = 0;
+    
+    output = [[AudioOutput alloc] initWithAudioFormat:&outputFormat];
+    [output setSampleDelegate:self];
+    [output start];  // immediately invokes our callback to generate samples
+    
+    
+    
+    
+    
+    
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectDistance) name:kImageCapturedSuccessfully object:nil];
   
 	[[captureManager captureSession] startRunning];
@@ -202,6 +223,28 @@
   }
 }
 
+
+
+// Code copied thoughtlessly from MobileSynth
+
+- (OSStatus)generateSamples:(AudioBufferList*)buffers {
+    assert(controller_);
+    assert(buffers->mNumberBuffers == 1);  // mono output  
+    AudioBuffer* outputBuffer = &buffers->mBuffers[0];
+    SInt32* data = (SInt32*)outputBuffer->mData;
+    if (controller_->released()) {
+        // Silence
+        memset(data, 0, outputBuffer->mDataByteSize);
+        return noErr;
+    }
+    int samples = outputBuffer->mDataByteSize / sizeof(SInt32);
+    float buffer[samples];
+    controller_->GetFloatSamples(buffer, samples);
+    for (int i = 0; i < samples; ++i) {
+        data[i] = buffer[i] * 16777216L;
+    }
+    return noErr;
+}
 
 
 
