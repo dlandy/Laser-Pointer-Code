@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "CaptureSessionManager.h"
-
+// here we'll need #import MobileSynth(or whatever it's called)
 @interface AROverlayViewController : UIViewController {
     
 }

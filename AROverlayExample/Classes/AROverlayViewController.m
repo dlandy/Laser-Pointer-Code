@@ -1,6 +1,7 @@
 #import "AROverlayViewController.h"
 
 #define BETA 3.1415 / 4
+//this determines how many lines it checks for the reddest spot
 #define NLINES 10
 
 @interface AROverlayViewController ()
@@ -111,6 +112,8 @@
   [[self captureManager] captureStillImage];
 }
 
+
+// Most central distance estimation code goes in here
 - (void)detectDistance 
 {
     NSLog(@"about to detect Distance ");
@@ -159,27 +162,32 @@
 
 // Calculate to find distance
 
-  
-// Assume the image map is roughly linear, for now
-// Assumes laser pointer is to the left of the image, in screen coordinates
-alpha = minAngle + xBright * maxAngle;
+
+    // Assume the image map is roughly linear, for now
+    // Assumes laser pointer is to the left of the image, in screen coordinates
+    //NOTE: THIS CALCULATION IS INCORRECT
+    //Also, S, maxAngle, and minAngle all need to be set.
+    alpha = minAngle + xBright * maxAngle;
 
 
-// with 
-// Separation S between camera and laser 
-// Alpha as angle in the laser pointer (measured with 0 when the laser pointer aims directly toward the camera)
-// Beta as angle of the light in the camera (measured identically)
-d = s * tan(alpha)*tan(beta) / (tan(beta)-tan(alpha));
+    // with 
+    // Separation S between camera and laser 
+    // Alpha as angle in the laser pointer (measured with 0 when the laser pointer aims directly toward the camera)
+    // Beta as angle of the light in the camera (measured identically)
+    d = s * tan(alpha)*tan(beta) / (tan(beta)-tan(alpha));
 
     [scanningLabel setText:[NSString localizedStringWithFormat:@"%2d, %4.4f, %2.0f", 
                             xBright, d, mostRed]];
     NSLog(@"Done detecting Distance ");
+    //Start by feeding xBright into mobile synth.
+    
     
 	[[self scanningLabel] setHidden:NO];
 // Set label to brightness, point, and distance
+    // afterDelay currently set to 100ms, could change
+    
 
-//[self performSelector:@selector(hideLabel:) withObject:[self scanningLabel] afterDelay:2];
-    [self performSelector:@selector(scanButtonPressed) withObject: nil afterDelay:0.1];
+    [self performSelector:@selector(scanButtonPressed) withObject: nil afterDelay:0.0];
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
