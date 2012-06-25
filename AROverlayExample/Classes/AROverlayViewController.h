@@ -1,3 +1,4 @@
+// are we in the right version?
 #import <UIKit/UIKit.h>
 #import "CaptureSessionManager.h"
 // here we'll need #import MobileSynth(or whatever it's called)
